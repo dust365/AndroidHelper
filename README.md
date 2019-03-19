@@ -16,7 +16,7 @@
 
 
 # APK 地址
-[戳我下载](https://github.com/fashare2015/ActivityTracker/blob/master/apk/app-debug.apk?raw=true)
+[戳我下载](https://raw.githubusercontent.com/dust365/AndroidHelper/master/app/goodApk/app-release.apk)
 <br/>
 
 
