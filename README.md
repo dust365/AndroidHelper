@@ -4,20 +4,24 @@
 
 ## AndroidHelper小助手
   - 面对复杂庞大的项目你是否无从下手，繁杂的页面关系是不是一脸懵，现在快来使用小助手，帮你查找页面仅仅需要两秒钟。
+  - 后续将陆续加入新的功能
 
 
-* 1.NDK的一些测试样例。
-* 2.一些设计模式的自我练习。
-* 3.grovy学习的一些 基础写法。
-* 4.Xml的解析。
-* 5.svg 构造地图，异型区域选中效果变色效果。
+* 1.查找页面快、稳、准
+* 2.支持版本4.4-9.0
+* 3.持续更新欢迎issues
 
- ![image](https://github.com/dust365/PersonDemo/blob/master/app/src/main/res/raw/map.gif)
+
+
+ ![image](https://raw.githubusercontent.com/dust365/AndroidHelper/master/app/images/downLoadCode.png)
 
 
 # APK 地址
 [戳我下载](https://raw.githubusercontent.com/dust365/AndroidHelper/master/app/goodApk/app-release.apk)
 <br/>
 
+
+# 特别感谢那些收费的开发助手
+#  查阅和借鉴了一些他人成功 不一一列出了
 
 
