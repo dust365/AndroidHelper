@@ -18,18 +18,25 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="一个全局的悬浮窗, 显示栈顶 Activity 信息"
-        android:textSize="16sp"/>
+        android:text="戳我看页面信息"
+        />
 
     <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="@color/colorAccent"
-        android:text="开启悬浮窗"
-        android:textColor="@android:color/white"/>
+        android:text="开启开发者"
+        />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="......"
+        />
+
+
 
 
 </LinearLayout>

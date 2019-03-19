@@ -1,9 +1,12 @@
 package com.dust.helper;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -26,6 +29,8 @@ import com.bumptech.glide.request.target.Target;
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
     private static final int REQUEST_CODE_ALERT_WINDOW = 2;
+
+    private int sclaleNum=5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +57,67 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+
                 ObjectAnimator  goneAnimation = ObjectAnimator.ofFloat(view, "translationY", 0, 100);
 //        goneAnimation.addListener(CompositeFragment.this);
 //                ObjectAnimator alphaGoneAnimator = ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0f);
-                ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(image,"rotation",0f,360f);
+                ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(image,"rotation",0f,360f*sclaleNum);
 
                 //隐藏动画集合
                 AnimatorSet goneSet = new AnimatorSet();
                 goneSet.setDuration(1000);
                 //添加动画
                 goneSet.play(goneAnimation).with(rotationAnimator);
+                goneSet.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+                        super.onAnimationCancel(animation);
+                    }
 
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+
+                        if(AccessibilityUtil.checkAccessibility(MainActivity.this)) {
+
+                            tosSartService();
+
+                            Toast.makeText(MainActivity.this,"OK",Toast.LENGTH_SHORT).show();
+                        }else {
+
+                            Toast.makeText(MainActivity.this,"Defeated",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+                        super.onAnimationRepeat(animation);
+                    }
+
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        super.onAnimationStart(animation);
+                    }
+
+                    @Override
+                    public void onAnimationPause(Animator animation) {
+                        super.onAnimationPause(animation);
+                    }
+
+                    @Override
+                    public void onAnimationResume(Animator animation) {
+                        super.onAnimationResume(animation);
+                    }
+                });
                 goneSet.start();
+
+                sclaleNum++;
+
+
+
+
             }
         });
 
@@ -75,15 +129,21 @@ public class MainActivity extends AppCompatActivity {
 
         checkOverlayPermission();
 
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+
+        /**
+         * 打开开发者
+         */
+        findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(AccessibilityUtil.checkAccessibility(MainActivity.this)) {
 
-                        tosSartService();
-                }
+                startAdbDugActivity();
+
             }
         });
+
+
+
     }
 
     /**
@@ -141,4 +201,54 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(this, "请先授予 \"Activity 栈\" 悬浮窗权限", Toast.LENGTH_LONG).show();
 //        }
     }
+
+
+    /**
+     *   判断 adb调试模式是否打开
+     */
+    private void startAdbDugActivity() {
+
+        boolean enableAdb = (Settings.Secure.getInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 0) > 0);//判断adb调试模式是否打开
+        if (enableAdb) {
+
+            Toast.makeText(MainActivity.this,"adb调试模式已经打开",Toast.LENGTH_SHORT).show();
+        } else {
+            startDevelopmentActivity();//跳转到开发者选项界面
+        }
+
+    }
+
+
+    /**
+     * 打开开发者模式界面
+     */
+    private void startDevelopmentActivity() {
+        try {
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+
+            try {
+                ComponentName componentName = new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings");
+                Intent intent = new Intent();
+                intent.setComponent(componentName);
+                intent.setAction("android.intent.action.View");
+                startActivity(intent);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+
+                try {
+                    Intent intent = new Intent("com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS");//部分小米手机采用这种方式跳转
+                    startActivity(intent);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+
 }

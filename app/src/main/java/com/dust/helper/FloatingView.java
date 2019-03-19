@@ -68,12 +68,10 @@ public class FloatingView extends LinearLayout {
         String packageName = event.getPackageName(),
                 className = event.getClassName();
 
-        mTvPackageName.setText(packageName);
-        mTvClassName.setText(
-                className.startsWith(packageName)?
-                className.substring(packageName.length()):
-                className
-        );
+        mTvPackageName.setText("包名："+packageName);
+        mTvClassName.setText("Activity名："+(className.startsWith(packageName)? className.substring(packageName.length()): className));
+
+
     }
 
     Point preP, curP;

@@ -49,6 +49,9 @@ public class TrackerService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         Log.d(TAG, "onAccessibilityEvent: " + event.getPackageName());
+        Log.d(TAG, "describeContents: " + event.describeContents());
+
+
         if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
 
             CharSequence packageName = event.getPackageName();
