@@ -15,14 +15,17 @@
 
  ![image](https://raw.githubusercontent.com/dust365/AndroidHelper/master/app/images/downLoadCode.png)
  
+ # APK 地址
+ [戳我下载](https://raw.githubusercontent.com/dust365/AndroidHelper/master/app/goodApk/app-release1.apk)
+ 
+ 
  # 实际效果图
  ![image](https://github.com/dust365/AndroidHelper/blob/master/app/images/A1.jpg)
  ![image](https://github.com/dust365/AndroidHelper/blob/master/app/images/A2.jpg)
  ![image](https://github.com/dust365/AndroidHelper/blob/master/app/images/A3.jpg)
 
 
-# APK 地址
-[戳我下载](https://raw.githubusercontent.com/dust365/AndroidHelper/master/app/goodApk/app-release1.apk)
+
 
 
 
