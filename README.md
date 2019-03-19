@@ -18,10 +18,10 @@
 
 # APK 地址
 [戳我下载](https://raw.githubusercontent.com/dust365/AndroidHelper/master/app/goodApk/app-release.apk)
+
+
+
+* 特别感谢那些收费的开发助手
+* 查阅和借鉴了一些他人资料 不一一列出了
 <br/>
-
-
-## 特别感谢那些收费的开发助手
-## 查阅和借鉴了一些他人成功 不一一列出了
-
 
