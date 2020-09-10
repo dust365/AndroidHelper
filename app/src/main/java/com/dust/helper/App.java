@@ -16,10 +16,8 @@ public class App extends Application {
     }
 
 
-    /**
-     * 反射 禁止弹窗
-     */
-    private void disableAPIDialog(){
+    //*** 反射 禁止弹窗*/
+/*    private void disableAPIDialog(){
         if (Build.VERSION.SDK_INT < 28)return;
         try {
             Class clazz = Class.forName("android.app.ActivityThread");
@@ -32,6 +30,6 @@ public class App extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 }
